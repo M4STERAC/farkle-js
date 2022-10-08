@@ -5,6 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Jest",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": [
+                "--inspect-brk",
+                "${workspaceRoot}/node_modules/jest/bin/jest.js",
+                "--runInBand",
+                "scoreDecider"
+            ]
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
