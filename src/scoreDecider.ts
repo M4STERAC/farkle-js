@@ -3,11 +3,11 @@ import { CustomScores, ReturnedScore } from '../utility/general';
 export default class ScoreDecider {
 
     //List of possible scores
-    #possibleScores: CustomScores;
+    #CustomScores: CustomScores | undefined;
     #score: number = 0;
 
-    constructor(scoreRules: CustomScores) {
-        this.#possibleScores = scoreRules;
+    constructor(scoreRules?: CustomScores) {
+        this.#CustomScores = scoreRules;
     }
 
 

@@ -2,15 +2,14 @@
 import Player from './Player';
 import ScoreDecider from './scoreDecider';
 import { ImageGenerator } from './generateDiceImage';
-import GameConfiguration from './gameConfiguration.json';
-import { CustomScores, ReturnedScore } from '../utility/general';
+import { ReturnedScore } from '../utility/general';
 
 const prompt = require('prompt-sync')();
 
 
 //Initiate Fields
 let imgGen: ImageGenerator = new ImageGenerator();
-let scoreRef: ScoreDecider = new ScoreDecider(GameConfiguration.possibleScores);
+let scoreRef: ScoreDecider = new ScoreDecider();
 const winCondition: number = 10000;
 var players: Player[] = [];
 var topScore: number = 0;
