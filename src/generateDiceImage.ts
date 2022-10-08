@@ -5,8 +5,6 @@ export class ImageGenerator {
 
     }
 
-    //Initiate Fields
-    possibleValues: number[] = [1, 2, 3, 4, 5, 6];
 
     generateDiceImage(rollResult: number[]) {
         for(let number of rollResult) {

@@ -1,5 +1,4 @@
 import { PossibleScores, ReturnedScore } from '../utility/general';
-import Player from './Player';
 
 export default class ScoreDecider {
 
