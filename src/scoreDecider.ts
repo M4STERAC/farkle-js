@@ -1,12 +1,12 @@
-import { PossibleScores, ReturnedScore } from '../utility/general';
+import { CustomScores, ReturnedScore } from '../utility/general';
 
 export default class ScoreDecider {
 
     //List of possible scores
-    #possibleScores: PossibleScores;
+    #possibleScores: CustomScores;
     #score: number = 0;
 
-    constructor(scoreRules: PossibleScores) {
+    constructor(scoreRules: CustomScores) {
         this.#possibleScores = scoreRules;
     }
 
