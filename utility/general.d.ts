@@ -3,7 +3,7 @@ export type PlayerList = {
     id: number
 }
 
-export type PossibleScores = {
+export type CustomScores = {
     roll: number[],
     score: number
 }[]

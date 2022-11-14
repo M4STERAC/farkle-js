@@ -2,16 +2,14 @@
 import Player from './Player';
 import ScoreDecider from './scoreDecider';
 import { ImageGenerator } from './generateDiceImage';
-import GameConfiguration from './gameConfiguration.json';
-import { PlayerList, PossibleScores, ReturnedScore } from '../utility/general';
+import { ReturnedScore } from '../utility/general';
 
 const prompt = require('prompt-sync')();
 
 
 //Initiate Fields
 let imgGen: ImageGenerator = new ImageGenerator();
-let scoreRef: ScoreDecider = new ScoreDecider(GameConfiguration.possibleScores);
-const playerList: PlayerList[] = GameConfiguration.players;
+let scoreRef: ScoreDecider = new ScoreDecider();
 const winCondition: number = 10000;
 var players: Player[] = [];
 var topScore: number = 0;
@@ -20,12 +18,14 @@ var topScore: number = 0;
 //Start of game
 console.log('\n====================================\n');
 console.log('Welcome to FARKLE: CLI Edition!');
-console.log('\n====================================');
+console.log('\n====================================\n');
 
 
 //Create player objects
-for (let i = 0; i < playerList.length; i++) {
-    const player: Player = new Player(playerList[i].name, playerList[i].id);
+let numOfPlayers: string = prompt('How many players will be playing today? ');
+for(let i = 1; i <= +numOfPlayers; i++) {
+    let playerName: string = prompt(`Name for player ${i}: `);
+    const player: Player = new Player(playerName, i);
     players.push(player);
 }
 
@@ -51,24 +51,6 @@ for (let turnNum = 0; topScore < winCondition; turnNum++) {
         //roll dice, create the image, and see if a score is available
         var rollResults: number[] = rollDice(numberOfDice);
         imgGen.generateDiceImage(rollResults);
-
-        //The code below will require intense error handling to make sure the user only types values that are in the array
-
-        // //select dice to remove from rollResults
-        // let selectedDice: string = prompt('Select dice to keep... (None) ');
-        // let selectedDiceStringArray: string[] = selectedDice.split(',');
-        // let selectedDiceArray: number[] = [];
-
-        // for(let i = 0; i < selectedDiceStringArray.length; i++) {
-        //     selectedDiceArray.push(parseInt(selectedDiceStringArray[i]));
-        // }
-
-        // selectedDiceArray.forEach((el) => {
-        //     if(!(rollResults.includes(el))) {
-        //         rollResults.splice(rollResults.indexOf(el), 1);
-        //     }
-        // })
-
         rollResults.sort();
         results = scoreRef.getScore(rollResults);
         

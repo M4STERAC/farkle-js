@@ -6,12 +6,13 @@
   "scripts": {
     "build": "tsc && node out/index.js",
     "create": "node out/createGameConfigTemplate.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Matthew Manka",
   "license": "UNLICENSED",
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
+    "@types/jest": "^29.1.2",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
